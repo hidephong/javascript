@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd\">
+<html moznomarginboxes="" mozdisallowselectionprint="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<div id="divPrint" name="divPrint" overflow-x="hidden;" overflow-y="scroll;">
+<p>Page 1</p>
+<div class="page-break"></div>
+<p>Page 2</p>
+<table width="100%" id="footer">		
+			<tbody><tr>
+				<td  align="left" width="75%"><span style="font-style: italic; font-size: 14px !important;">Footer here.</span></td>
+					
+				<td align="right" colspan="1" width="25%"><span style="font-weight: bold;float:right;">Print Time: 10:10 </span></td>
+			</tr>				
+		</tbody></table>
+</div>
+<div style="position:absolute;" class="btn" onclick="printInfo();" role="button"><span>In</span></div>
+</body>
+<script language="javascript" type="text/javascript">
+ 
+  function prt(o,a){
+  	var isFirefox = typeof InstallTrigger !== 'undefined';
+  	var isChrome = !!window.chrome; 
+  	var e = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd\">";
+  	  var d = "toolbar=no, location=no, directories=no, menubar=no,scrollbars=no, width=800, height=600,left=0, top=0, _blank";
+  	   var f= "@media print { html,body { margin: 10mm!important; padding: 5mm!important; width: 210mm;height: 297mm;} .page-break { display: block; page-break-before: always; } .padding-top-style { padding-top:15mm; } #footer { position:fixed; left:0mm; top:350mm; height:30px; width:100%;} } @page{ margin:0px auto;size:A4; padding:0!important;}  @bottom-left-corner, @bottom-left{ display: none!important;}";
+	  var h = document.getElementById(o).innerHTML;
+  	if(isChrome){  
+  	      var g = "toolbar=no, location=no, directories=no, menubar=no,scrollbars=no, width=800, height=600, left=0, top=0,margin-top:0, margin-bottom:0, _blank";
+  	      var l = window.open("","",g);
+  	      l.document.open();
+  	      l.document.write(e+'<head><title>'+a+'</title><style>'+f+'</style></head><body style="padding: 10mm; margin: 0 !important;" onLoad="self.print(); self.close();">'+h);
+  	      l.document.write('</body></html>');
+  	      l.document.close();
+  	      l.focus();
+  	}
+  	  else if(isFirefox){
+  	  	  var z = document.getElementById('footer').innerHTML;
+	      var m = window.open('', '', "'height=600,width=800'");
+	      m.document.write(e+'<head moznomarginboxes="" mozdisallowselectionprint=""><title>'+a+'</title><style>'+"@media print { html,body { margin: 0mm!important; padding: 5mm 0mm 5mm 10mm!important; width: 180mm;height: 257mm;font-size:10pt;} .page-break { display: block; page-break-before: always; } .padding-top-style { padding-top:15mm; } #footer { position:fixed; left:20mm; bottom:2mm; height:30px; width:180mm;} } @page{ margin:0px auto;size:A4; padding:0!important;}  @bottom-left-corner, @bottom-left{ display: none!important;}"+'</style></head><body style="padding: 10mm; margin: 0 !important;" onLoad="self.print(); self.close();"><span style="position:absolute;top:5mm;left:100mm;display:block;">'+a+'</span>'+h);
+		  m.document.write('</body></html>');
+	      m.document.close();
+	      m.focus();
+	  }else{
+  	      window.print();
+  	  }
+  }
+     printInfo = function() {     
+  	  prt('divPrint','Title');
+      };
+   </script>
+  <style>
+  .btn{
+  	  color: #fff;
+	  background-color: #337ab7;
+	  border-color: #2e6da4;
+	  display: inline-block;
+	  padding: 6px 12px;
+	  margin-bottom: 0;
+	  font-size: 14px;
+	  font-weight: 400;
+	  line-height: 1.42857143;
+	  text-align: center;
+	  white-space: nowrap;
+	  vertical-align: middle;
+	  -ms-touch-action: manipulation;
+	  touch-action: manipulation;
+	  cursor: pointer;
+	  -webkit-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+	  background-image: none;
+	  border: 1px solid transparent;
+	  border-radius: 4px;
+	}
+
+	#footer { position:fixed; left:0px; bottom:0px; height:30px; width:100%;}
+
+  </style>
+</html>
